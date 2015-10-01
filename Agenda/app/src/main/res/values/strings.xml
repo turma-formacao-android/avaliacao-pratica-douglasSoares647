@@ -3,4 +3,16 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="lbl_name">Name</string>
+    <string name="lbl_adress">Adress</string>
+    <string name="lbl_zipcode">Zip Code</string>
+    <string name="lbl_fill_adress">Fill Adress</string>
+    <string name="Type">Type</string>
+    <string name="lbl_type">Type</string>
+    <string name="lbl_street">Street</string>
+    <string name="lbl_neighborhood">Neighborhood</string>
+    <string name="lbl_city">City</string>
+    <string name="lbl_state">State</string>
+    <string name="app_new_contact">New Contact</string>
+    <string name="menu_new_contact">New contact</string>
 </resources>
