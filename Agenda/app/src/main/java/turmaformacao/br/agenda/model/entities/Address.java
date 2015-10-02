@@ -3,16 +3,28 @@ package turmaformacao.br.agenda.model.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by Administrador on 01/10/2015.
  */
 public class Address implements Parcelable {
-
+    @JsonProperty("cep")
     private String zipCode;
+
+    @JsonProperty("tipoDeLogradouro")
     private String type;
+
+    @JsonProperty("logradouro")
     private String street;
+
+    @JsonProperty("bairro")
     private String neighborhood;
+
+    @JsonProperty("cidade")
     private String city;
+
+    @JsonProperty("estado")
     private String state;
 
 
@@ -101,4 +113,47 @@ public class Address implements Parcelable {
             return new Address[size];
         }
     };
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Address address = (Address) o;
+
+        if (zipCode != null ? !zipCode.equals(address.zipCode) : address.zipCode != null)
+            return false;
+        if (type != null ? !type.equals(address.type) : address.type != null) return false;
+        if (street != null ? !street.equals(address.street) : address.street != null) return false;
+        if (neighborhood != null ? !neighborhood.equals(address.neighborhood) : address.neighborhood != null)
+            return false;
+        if (city != null ? !city.equals(address.city) : address.city != null) return false;
+        return !(state != null ? !state.equals(address.state) : address.state != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = zipCode != null ? zipCode.hashCode() : 0;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (street != null ? street.hashCode() : 0);
+        result = 31 * result + (neighborhood != null ? neighborhood.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
+        return result;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "zipCode='" + zipCode + '\'' +
+                ", type='" + type + '\'' +
+                ", street='" + street + '\'' +
+                ", neighborhood='" + neighborhood + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }

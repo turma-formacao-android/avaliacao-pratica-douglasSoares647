@@ -14,8 +14,10 @@ public class Contact implements Parcelable {
     private Long id;
     private String name;
     private Address adress;
-    private List<String> telephones;
-    private List<String> socialNetworks;
+    private List<Telephone> telephones;
+    private List<SocialNetwork> socialNetworks;
+    private List<Email> emails;
+
 
     public String getName() {
         return name;
@@ -33,20 +35,28 @@ public class Contact implements Parcelable {
         this.adress = adress;
     }
 
-    public List<String> getTelephones() {
+    public List<Telephone> getTelephones() {
         return telephones;
     }
 
-    public void setTelephones(List<String> telephones) {
+    public void setTelephones(List<Telephone> telephones) {
         this.telephones = telephones;
     }
 
-    public List<String> getSocialNetworks() {
+    public List<SocialNetwork> getSocialNetworks() {
         return socialNetworks;
     }
 
-    public void setSocialNetworks(List<String> socialNetworks) {
+    public void setSocialNetworks(List<SocialNetwork> socialNetworks) {
         this.socialNetworks = socialNetworks;
+    }
+
+    public List<Email> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
     }
 
     public Long getId() {
@@ -57,6 +67,7 @@ public class Contact implements Parcelable {
         this.id = id;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -64,27 +75,28 @@ public class Contact implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(this.id = this.id==null?-1 : this.id);
-        dest.writeString(this.name = this.name == null ? "" : this.name);
-        dest.writeParcelable(this.adress, flags);
-        dest.writeStringList(this.telephones = this.telephones == null? new ArrayList<String>(): this.telephones);
-        dest.writeStringList(this.socialNetworks = this.socialNetworks == null? new ArrayList<String>(): this.socialNetworks);
-
+        dest.writeValue(this.id==null?-1:this.id);
+        dest.writeString(this.name==null?"":this.name);
+        dest.writeParcelable(this.adress, 0);
+        dest.writeTypedList(telephones);
+        dest.writeTypedList(socialNetworks);
+        dest.writeTypedList(emails);
     }
 
     public Contact() {
+        adress = new Address();
     }
 
     protected Contact(Parcel in) {
-        this.id = in.readLong();
-        id = id == -1? null : id;
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
         this.name = in.readString();
         this.adress = in.readParcelable(Address.class.getClassLoader());
-        this.telephones = in.createStringArrayList();
-        this.socialNetworks = in.createStringArrayList();
+        this.telephones = in.createTypedArrayList(Telephone.CREATOR);
+        this.socialNetworks = in.createTypedArrayList(SocialNetwork.CREATOR);
+        this.emails = in.createTypedArrayList(Email.CREATOR);
     }
 
-    public static final Parcelable.Creator<Contact> CREATOR = new Parcelable.Creator<Contact>() {
+    public static final Creator<Contact> CREATOR = new Creator<Contact>() {
         public Contact createFromParcel(Parcel source) {
             return new Contact(source);
         }

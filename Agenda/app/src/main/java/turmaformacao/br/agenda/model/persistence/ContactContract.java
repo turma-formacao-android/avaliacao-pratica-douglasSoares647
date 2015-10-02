@@ -3,6 +3,9 @@ package turmaformacao.br.agenda.model.persistence;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import turmaformacao.br.agenda.model.entities.Address;
 import turmaformacao.br.agenda.model.entities.Contact;
 
@@ -12,9 +15,7 @@ import turmaformacao.br.agenda.model.entities.Contact;
 public final class ContactContract {
 
     public static final String TABLE_CONTACT = "contact";
-    public static final String TABLE_SOCIALNETWORKS = "socialnetwork";
     public static final String ID = "id";
-    public static final String ID_CONTACT = "idContact";
     public static final String NAME = "name";
     public static final String ZIPCODE = "zipcode";
     public static final String TYPE = "type";
@@ -37,9 +38,9 @@ public final class ContactContract {
         contact.append(" ( ");
         contact.append(ID + " integer primary key, ");
         contact.append(NAME + " text not null, ");
-        contact.append(ZIPCODE + "text, ");
+        contact.append(ZIPCODE + " text, ");
         contact.append(TYPE + " text, ");
-        contact.append(STREET + "text, ");
+        contact.append(STREET + " text, ");
         contact.append(NEIGHBORHOOD + " text, ");
         contact.append(CITY + " text, ");
         contact.append(STATE + " text ");
@@ -69,10 +70,37 @@ public final class ContactContract {
             Contact contact = new Contact();
             contact.setId(cursor.getLong(cursor.getColumnIndex(ID)));
             contact.setName(cursor.getString(cursor.getColumnIndex(NAME)));
+
+            Address address = new Address();
+            address.setCity(cursor.getString(cursor.getColumnIndex(CITY)));
+            address.setNeighborhood(cursor.getString(cursor.getColumnIndex(NEIGHBORHOOD)));
+            address.setState(cursor.getString(cursor.getColumnIndex(STATE)));
+            address.setStreet(cursor.getString(cursor.getColumnIndex(STREET)));
+            address.setType(cursor.getString(cursor.getColumnIndex(TYPE)));
+            address.setZipCode(cursor.getString(cursor.getColumnIndex(ZIPCODE)));
+
+            contact.setAdress(address);
+
             return contact;
 
         }
 
         return null;
+    }
+
+
+    public static List<Contact> getContacts(Cursor cursor){
+        List<Contact> contacts = new ArrayList<>();
+        while(cursor.moveToNext()){
+            contacts.add(getContact(cursor));
+        }
+        return contacts;
+    }
+
+    public static Long getIdFromLastPosition(Cursor cursor){
+        if(cursor.moveToLast())
+        return cursor.getLong(cursor.getColumnIndex(ID));
+
+        else return null;
     }
 }

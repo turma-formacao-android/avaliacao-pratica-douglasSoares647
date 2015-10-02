@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <EditText
         android:layout_width="match_parent"
@@ -19,6 +23,7 @@
             android:layout_marginTop="25dp"
             android:id="@+id/editTextZipCode"
             android:hint="@string/lbl_zipcode"
+            android:inputType="number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"/>
@@ -66,10 +71,95 @@
         android:layout_height="wrap_content" />
 
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
-    </ListView>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextTelephone"
+                android:layout_weight="8"
+                android:inputType="number"
+                android:hint="@string/lbl_telephone"/>
 
-</LinearLayout>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="+"
+                android:layout_weight="2"
+                android:id="@+id/btnAddTelephone"/>
+        </LinearLayout>
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/listViewTelephones">
+
+        </ListView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextEmail"
+                android:layout_weight="8"
+                android:hint="@string/lbl_email"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="+"
+                android:layout_weight="2"
+                android:id="@+id/btnAddEmail"/>
+        </LinearLayout>
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/listViewEmails">
+
+        </ListView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextSocialNetwork"
+                android:layout_weight="8"
+                android:hint="@string/lbl_social_network"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="+"
+                android:layout_weight="2"
+                android:id="@+id/btnAddSocialNetwork"/>
+        </LinearLayout>
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/listViewSocialNetworks">
+
+        </ListView>
+
+    </LinearLayout>
+</ScrollView>

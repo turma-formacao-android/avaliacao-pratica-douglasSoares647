@@ -26,9 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(ContactContract.createTableContact());
-        db.execSQL(ContactContract.createTableEmail());
-        db.execSQL(ContactContract.createTableSocialNetworks());
-        db.execSQL(ContactContract.createTableTelephones());
+        db.execSQL(EmailContract.createTableEmail());
+        db.execSQL(SocialNetworksContract.createTableSocialNetworks());
+        db.execSQL(TelephoneContract.createTableTelephones());
     }
 
     @Override

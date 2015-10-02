@@ -15,4 +15,21 @@
     <string name="lbl_state">State</string>
     <string name="app_new_contact">New Contact</string>
     <string name="menu_new_contact">New contact</string>
+    <string name="msg_zipcode_not_found">Zipcode not found!</string>
+    <string name="menu_create_new_contact">Create new contact</string>
+    <string name="msg_delete_database">Deleting contact from database...</string>
+    <string name="msg_loading_database">Loading contacts from database...</string>
+    <string name="lbl_telephone">Telephone</string>
+    <string name="lbl_email">Email</string>
+    <string name="lbl_social_network">Social Network</string>
+    <string name="lbl_filter">Filter</string>
+    <string name="lbl_filter_by_name">Filter by name</string>
+    <string name="lbl_edit">Edit</string>
+    <string name="lbl_delete">Delete</string>
+    <string name="lbl_confirm">Confirm</string>
+    <string name="msg_delete_confirm">Are you sure you want to delete this item?</string>
+    <string name="lbl_yes">Yes</string>
+    <string name="msg_deleted_sucessfully">Contact deleted sucessfully!</string>
+    <string name="lbl_no">No</string>
+    <string name="lbl_item">Item</string>
 </resources>
